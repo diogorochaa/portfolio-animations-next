@@ -1,8 +1,14 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Sora } from 'next/font/google'
 import './globals.css'
+import { Header } from './components/Header'
+import { Nav } from './components/Nav'
 
-const inter = Inter({ subsets: ['latin'] })
+const sora = Sora({
+  subsets: ['latin'],
+  variable: '--font-sora',
+  weight: ['100', '200', '300', '400', '500', '600', '700', '800'],
+})
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -16,7 +22,15 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body
+        className={`${sora.className}  leading-relaxed overflow-hidden bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))] from-gray-900 via-purple-900 to-purple-900  text-white font-sora`}
+      >
+        <div className="w-full h-screen  overflow-hidden">
+          <Header />
+          {children}
+          <Nav />
+        </div>
+      </body>
     </html>
   )
 }
